@@ -5,12 +5,14 @@ project "Core"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp" }
+   files { "Source/**.h", "Source/**.cpp", "**.dll" }
 
    includedirs
    {
-      "Source"
+      "Source",
+      "SDL2/include"
    }
+   links {"SDL2/lib/SDL.lib", "SDL2/lib/SDL_test.lib", "SDL2/lib/SDL_main.lib", "SDL2/lib/SDL_image.lib"}
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")

@@ -8,6 +8,12 @@ Binaries/
 *.vcxproj.filters
 *.sln
 *.log
+*.xcodeproj
+App/SDL2.dll
+App/SDL2_image.dll
+App/SDL2_mixer.dll
+App/SDL2_ttf.dll
+
 Makefile
 
 # Exclude
