@@ -1,8 +1,16 @@
+#pragma once
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Image.h"
 #include <iostream>
 #include "vec2.h"
+#include <SDL_ttf.h>
+
+struct Event
+{
+    SDL_Event* ev;
+    unsigned int scancode;
+};
 
 namespace Engine
 {
@@ -47,13 +55,18 @@ namespace Engine
         quit = false;
     }
 
-    void HandleEvents()
+    
+
+    SDL_Event HandleEvents(int (*func)(Event))
     {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 quit = true;
             }
+            func(Event(&event, event.key.keysym.scancode));
+
         }
+        return event;
     }
     
     void EndRender()
@@ -65,9 +78,11 @@ namespace Engine
     {
         SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 
-        // Clear the renderer
         SDL_RenderClear(renderer);
     }
+
+
+    
 
     Image LoadImage(const char* path)
     {
@@ -93,15 +108,17 @@ namespace Engine
 
     void DrawImage(Image image, vec2 scale, vec2 position)
     {
-        float w = scale.a*image.w;
-        float h = scale.b*image.h;
-        SDL_Rect destRect = { 100, 100, w, h};
+        float w = scale.x*image.w;
+        float h = scale.y*image.h;
+        SDL_Rect destRect = { position.x, position.y, w, h};
 
         SDL_RenderCopy(renderer, image.texture, NULL, &destRect);
     }
 
+
     void MainLoopEnd()
     {
+        SDL_RenderPresent(renderer);
         SDL_Delay(10);
     }
 
@@ -111,4 +128,15 @@ namespace Engine
         SDL_DestroyWindow(window);
         SDL_Quit();
     }
+
+    SDL_Renderer* GetRenderer()
+    {
+        return renderer;
+    }
+    SDL_Window* GetWindow()
+    {
+        return window;
+    }
+
+
 };

@@ -5,15 +5,16 @@ project "App"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp" }
+   files { "Source/**.h", "Source/**.cpp", "ImGui/**.h", "ImGui/**.cpp" }
 
    includedirs
    {
       "Source",
-
+	"ImGui",
 	  -- Include Core
-	  "../Core/Source",
-      "../Core/SDL2/include"
+	"../Core/Source",
+        "../Core/SDL2/include",
+
    }
 
    links
