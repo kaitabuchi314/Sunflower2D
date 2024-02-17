@@ -1,6 +1,5 @@
-# Brackeys Game Jam 2024
-This is my submission for Brackeys Jam 2024! It uses a custom engine made in the JAM!
-Thanks to The Cherno for the project template.
+# Sunflower 2D
+Sunflower 2D is a 2D SDL-based game engine. This game engine is meant to learn C++, to make an indie game, or even for pro teams to use.
 
 # How to setup
 First, install python. Next, clone the repo using `git clone --recursive https://github.com/kaitabuchi314/BrackeysJam.git`. Then go into Scripts and click on your OS. 
