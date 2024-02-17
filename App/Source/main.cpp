@@ -1,4 +1,4 @@
-#include <Core/Engine.h>
+#include <Core/Sunflower.h>
 #include <imgui.h>
 #include <imgui_impl_sdl2.h>
 #include <imgui_impl_sdlrenderer2.h>
@@ -7,8 +7,8 @@
 const int WIDTH = (int)1920 / 1.5;
 const int HEIGHT = (int)1080 / 1.5;
 
-Engine::vec2 img_scale;
-Engine::vec2 img_pos;
+Sunflower::vec2 img_scale;
+Sunflower::vec2 img_pos;
 
 bool on = true;
 float move_speed = 4;
@@ -39,7 +39,7 @@ int handle_events(Event e)
 
 int main(int argc, char* argv[])
 {
-	Engine::InitRenderer("Brackeys Game Jam", WIDTH, HEIGHT);
+	Sunflower::InitRenderer("Sunflower", WIDTH, HEIGHT);
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -51,23 +51,23 @@ int main(int argc, char* argv[])
 
 	ImGui::StyleColorsDark();
 
-	ImGui_ImplSDL2_InitForSDLRenderer(Engine::GetWindow(), Engine::GetRenderer());
-	ImGui_ImplSDLRenderer2_Init(Engine::GetRenderer());
+	ImGui_ImplSDL2_InitForSDLRenderer(Sunflower::GetWindow(), Sunflower::GetRenderer());
+	ImGui_ImplSDLRenderer2_Init(Sunflower::GetRenderer());
 
 	io.Fonts->AddFontDefault();
 
-	Engine::Image image = Engine::LoadImage("Assets/kitten.png");
+	Sunflower::Image image = Sunflower::LoadImage("Assets/kitten.png");
 	
 	img_scale.x = 0.3f;
 	img_scale.y = 0.3f;
 
 
-	Engine::PreMainLoop();
+	Sunflower::PreMainLoop();
 
 
-	while (!Engine::quit)
+	while (!Sunflower::quit)
 	{
-		Engine::HandleEvents(handle_events);
+		Sunflower::HandleEvents(handle_events);
 
 
 		ImGui_ImplSDLRenderer2_NewFrame();
@@ -76,10 +76,10 @@ int main(int argc, char* argv[])
 		ImGui::NewFrame();
 		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
-		Engine::DrawBackground(53, 90, 222);
+		Sunflower::DrawBackground(53, 90, 222);
 
 
-		Engine::DrawImage(image, img_scale, img_pos);
+		Sunflower::DrawImage(image, img_scale, img_pos);
 
 		ImGui::Begin("Settings");
 		ImGui::Checkbox("Move using arrow keys", &on);
@@ -103,10 +103,10 @@ int main(int argc, char* argv[])
 		ImGui::Render();
 		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
 
-		Engine::MainLoopEnd();
+		Sunflower::MainLoopEnd();
 	}
 
-	Engine::Flush();
+	Sunflower::Flush();
 
 	return 0;
 };

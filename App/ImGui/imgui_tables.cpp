@@ -3717,7 +3717,7 @@ void ImGui::TableSettingsAddSettingsHandler()
 // - TableGcCompactSettings() [Internal]
 //-------------------------------------------------------------------------
 
-// Remove Table (currently only used by TestEngine)
+// Remove Table (currently only used by TestSunflower)
 void ImGui::TableRemove(ImGuiTable* table)
 {
     //IMGUI_DEBUG_PRINT("TableRemove() id=0x%08X\n", table->ID);
@@ -3751,7 +3751,7 @@ void ImGui::TableGcCompactTransientBuffers(ImGuiTableTempData* temp_data)
     temp_data->LastTimeActive = -1.0f;
 }
 
-// Compact and remove unused settings data (currently only used by TestEngine)
+// Compact and remove unused settings data (currently only used by TestSunflower)
 void ImGui::TableGcCompactSettings()
 {
     ImGuiContext& g = *GImGui;

@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 
-namespace Engine
+namespace Sunflower
 {
 	struct Image
 	{

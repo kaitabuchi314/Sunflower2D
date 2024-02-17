@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-namespace Engine
+namespace Sunflower
 {
 	void Log(const char* text)
 	{

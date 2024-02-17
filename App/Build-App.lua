@@ -19,7 +19,7 @@ project "App"
 
    links
    {
-      "Core"
+      "Sunflower-Core"
    }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")

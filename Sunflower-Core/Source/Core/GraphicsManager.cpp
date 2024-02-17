@@ -12,7 +12,7 @@ struct Event
     unsigned int scancode;
 };
 
-namespace Engine
+namespace Sunflower
 {
     SDL_Event event;
     bool quit;
