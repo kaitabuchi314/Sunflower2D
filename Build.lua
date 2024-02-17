@@ -10,8 +10,8 @@ workspace "BrackeysJam"
 
 OutputDir = "%{cfg.system}-%{cfg.architecture}/%{cfg.buildcfg}"
 
-group "Core"
-	include "Core/Build-Core.lua"
+group "Sunflower-Core"
+	include "Sunflower-Core/Build-Sunflower-Core.lua"
 group ""
 
 include "App/Build-App.lua"

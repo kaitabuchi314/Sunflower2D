@@ -1,0 +1,3 @@
+group "TestProject"
+	include "TestProject/Build-TestProject.lua"
+group ""

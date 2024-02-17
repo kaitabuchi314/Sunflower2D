@@ -1,4 +1,4 @@
-project "Core"
+project "TestProject"
    kind "StaticLib"
    language "C++"
    cppdialect "C++20"
@@ -9,10 +9,8 @@ project "Core"
 
    includedirs
    {
-      "Source",
-      "SDL2/include"
+      "Source"
    }
-   links {"SDL2/lib/SDL.lib", "SDL2/lib/SDL_test.lib", "SDL2/lib/SDL_main.lib", "SDL2/lib/SDL_image.lib"}
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")

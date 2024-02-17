@@ -1,33 +1,26 @@
-project "App"
-   kind "ConsoleApp"
+project "Sunflower-Core"
+   kind "StaticLib"
    language "C++"
    cppdialect "C++20"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp", "ImGui/**.h", "ImGui/**.cpp" }
+   files { "Source/**.h", "Source/**.cpp"}
 
    includedirs
    {
       "Source",
-	"ImGui",
-	  -- Include Core
-	"../Sunflower-Core/Source",
-        "../Sunflower-Core/SDL2/include",
-
+      "SDL2/include",
+      "../TestProject/Source"
    }
-
-   links
-   {
-      "Core"
-   }
+   links {"SDL2/lib/SDL.lib", "SDL2/lib/SDL_test.lib", "SDL2/lib/SDL_main.lib", "SDL2/lib/SDL_image.lib"}
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")
 
    filter "system:windows"
        systemversion "latest"
-       defines { "WINDOWS" }
+       defines { }
 
    filter "configurations:Debug"
        defines { "DEBUG" }
