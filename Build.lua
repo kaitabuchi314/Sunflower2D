@@ -1,5 +1,5 @@
 -- premake5.lua
-workspace "BrackeysJam"
+workspace "Sunflower2D"
    architecture "x64"
    configurations { "Debug", "Release", "Dist" }
    startproject "App"

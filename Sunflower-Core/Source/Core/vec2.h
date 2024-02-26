@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include "Core/Debug.h"
 
 namespace Sunflower
 {
@@ -46,6 +48,11 @@ namespace Sunflower
 			p.x = x - obj.x;
 			p.y = y - obj.y;
 			return p;
+		}
+
+		vec2 wstss(float width, float height)
+		{
+			return vec2((width/2)+x,(height/2)+y);
 		}
 	}; 
 };

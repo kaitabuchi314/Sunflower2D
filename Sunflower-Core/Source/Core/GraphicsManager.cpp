@@ -18,6 +18,8 @@ namespace Sunflower
     bool quit;
     SDL_Renderer* renderer;
     SDL_Window* window;
+    int w;
+    int h;
     bool InitRenderer(const char* title, int width, int height)
     {
         if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -67,6 +69,7 @@ namespace Sunflower
 
         }
         return event;
+        SDL_GetWindowSize(window, &w, &h);
     }
     
     void EndRender()
@@ -110,7 +113,7 @@ namespace Sunflower
     {
         float w = scale.x*image.w;
         float h = scale.y*image.h;
-        SDL_Rect destRect = { position.x, position.y, w, h};
+        SDL_Rect destRect = { position.wstss(w,h).x, position.wstss(w,h).y, w, h};
 
         SDL_RenderCopy(renderer, image.texture, NULL, &destRect);
     }

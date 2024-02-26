@@ -4,6 +4,7 @@
 #include <imgui_impl_sdlrenderer2.h>
 #include <string>
 
+
 const int WIDTH = (int)1920 / 1.5;
 const int HEIGHT = (int)1080 / 1.5;
 
