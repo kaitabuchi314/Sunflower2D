@@ -140,6 +140,4 @@ namespace Sunflower
     {
         return window;
     }
-
-
 };

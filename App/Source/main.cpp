@@ -6,44 +6,13 @@
 #define HEIGHT (int)1080 / 1.5
 #define MOVE_SPEED 8
 
-class SpriteRenderer : public Sunflower::Extender
-{
-public:
-	std::string path_to_image;
-
-	void on_start(Sunflower::Info info) override
-	{
-		image = Sunflower::LoadImage(path_to_image.c_str());
-
-	};
-	void on_update(Sunflower::Info info) override
-	{
-
-	};
-	void on_render(Sunflower::Info info) override
-	{
-		Sunflower::DrawImage(image, info.self->scale, info.self->position);
-	};
-	void on_input(Sunflower::Info info, Event ev) override
-	{
-
-	};
-
-private:
-	Sunflower::Image image;
-};
-
-static SpriteRenderer CreateSpriteRenderer()
-{
-	return SpriteRenderer();
-}
 
 class MySprite : public Sunflower::GameObject
 {
 public:
 	virtual void on_start(Sunflower::Info info) override
 	{
-		renderer = CreateSpriteRenderer();
+		renderer = Sunflower::CreateSpriteRenderer();
 		renderer.path_to_image = "Assets/kitten.png";
 		renderer.on_start(info);
 	};
@@ -60,7 +29,7 @@ public:
 		renderer.on_input(info, Event());
 	};
 private:
-	SpriteRenderer renderer;
+	Sunflower::SpriteRenderer renderer;
 };
 
 int main(int argc, char* argv[])
