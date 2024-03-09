@@ -59,13 +59,13 @@ namespace Sunflower
 
     
 
-    SDL_Event HandleEvents(int (*func)(Event))
+    SDL_Event HandleEvents()
     {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 quit = true;
             }
-            func(Event(&event, event.key.keysym.scancode));
+            //func(Event(&event, event.key.keysym.scancode));
 
         }
         return event;
