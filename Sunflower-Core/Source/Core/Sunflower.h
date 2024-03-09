@@ -7,3 +7,5 @@
 #include "Image.h"
 #include "Debug.h"
 #include "Keycodes.h"
+#include "GameObject.h"
+#include "Extender.h"
