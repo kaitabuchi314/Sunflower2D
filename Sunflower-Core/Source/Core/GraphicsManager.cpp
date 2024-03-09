@@ -58,30 +58,15 @@ namespace Sunflower
     }
 
     
-<<<<<<< Updated upstream
 
     SDL_Event HandleEvents(int (*func)(Event))
-=======
-    
-    SDL_Event handle_events()
->>>>>>> Stashed changes
     {
-        //std::vector<std::function<void(Event)>> funcs
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 quit = true;
             }
-<<<<<<< Updated upstream
             func(Event(&event, event.key.keysym.scancode));
 
-=======
-            //for (std::function<void(Event)> func : funcs)
-            //{
-            //    func(Event(&event, event.key.keysym.scancode));
-            //}
-
-            mouse_handle(event);
->>>>>>> Stashed changes
         }
         return event;
         SDL_GetWindowSize(window, &w, &h);
@@ -131,7 +116,6 @@ namespace Sunflower
         SDL_Rect destRect = { position.wstss(w,h).x, position.wstss(w,h).y, w, h};
 
         SDL_RenderCopy(renderer, image.texture, NULL, &destRect);
-        SDL_RenderPresent(renderer);
     }
 
 
