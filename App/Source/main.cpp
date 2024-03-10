@@ -1,66 +1,74 @@
 #include <Core/Sunflower.h>
-#include <imgui.h>
-#include <imgui_impl_sdl2.h>
-#include <imgui_impl_sdlrenderer2.h>
 #include <string>
 
 
-const int WIDTH = (int)1920 / 1.5;
-const int HEIGHT = (int)1080 / 1.5;
+#define WIDTH (int)1920 / 1.5
+#define HEIGHT (int)1080 / 1.5
+#define MOVE_SPEED 8
 
-Sunflower::vec2 img_scale;
-Sunflower::vec2 img_pos;
-
-bool on = true;
-float move_speed = 4;
-int handle_events(Event e)
+class MySprite : public Sunflower::GameObject
 {
-	ImGui_ImplSDL2_ProcessEvent(e.ev);
-	if (on)
+public:
+	void on_start(Sunflower::Info info) override
 	{
-		if (e.scancode == KEY_RIGHT)
+		renderer = Sunflower::CreateSpriteRenderer();
+		renderer.path_to_image = "Assets/kitten.png";
+		renderer.on_start(info);
+	};
+
+	void on_update(Sunflower::Info info) override
+	{
+		renderer.on_update(info);
+	};
+
+	void on_render(Sunflower::Info info) override
+	{
+		renderer.on_render(info);
+	};
+
+	void on_input(Sunflower::Info info, Event ev)
+	{
+		renderer.on_input(info, ev);
+
+		if (ev.scancode == KEY_LEFT)
 		{
-			img_pos.x += move_speed;
+			position.x -= 5;
 		}
-		else if (e.scancode == KEY_LEFT)
+		else if (ev.scancode == KEY_RIGHT)
 		{
-			img_pos.x += -move_speed;
+			position.x += 5;
 		}
-		if (e.scancode == KEY_UP)
+
+		if (ev.scancode == KEY_UP)
 		{
-			img_pos.y -= move_speed;
+			position.y -= 5;
 		}
-		else if (e.scancode == KEY_DOWN)
+		else if (ev.scancode == KEY_DOWN)
 		{
-			img_pos.y -= -move_speed;
+			position.y += 5;
 		}
-	}
-	return 0;
+	};
+private:
+	Sunflower::SpriteRenderer renderer;
+};
+
+MySprite object1;
+
+void EventCallback(Event e)
+{
+	object1.on_input(Sunflower::Info(&object1), e);
 };
 
 int main(int argc, char* argv[])
 {
 	Sunflower::InitRenderer("Sunflower", WIDTH, HEIGHT);
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
-	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	io.ConfigDockingWithShift = false;
+	object1 = MySprite();
 
-	ImGui::StyleColorsDark();
+	object1.position = Sunflower::vec2(0, 0);
+	object1.scale = Sunflower::vec2(0.3f, 0.3f);
 
-	ImGui_ImplSDL2_InitForSDLRenderer(Sunflower::GetWindow(), Sunflower::GetRenderer());
-	ImGui_ImplSDLRenderer2_Init(Sunflower::GetRenderer());
-
-	io.Fonts->AddFontDefault();
-
-	Sunflower::Image image = Sunflower::LoadImage("Assets/kitten.png");
-	
-	img_scale.x = 0.3f;
-	img_scale.y = 0.3f;
+	object1.on_start(Sunflower::Info(&object1));
 
 
 	Sunflower::PreMainLoop();
@@ -68,41 +76,14 @@ int main(int argc, char* argv[])
 
 	while (!Sunflower::quit)
 	{
-		Sunflower::HandleEvents(handle_events);
+		Sunflower::HandleEvents(EventCallback);
 
 
-		ImGui_ImplSDLRenderer2_NewFrame();
-		ImGui_ImplSDL2_NewFrame();
-
-		ImGui::NewFrame();
-		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
+		object1.on_update(Sunflower::Info(&object1));
 
 		Sunflower::DrawBackground(53, 90, 222);
 
-
-		Sunflower::DrawImage(image, img_scale, img_pos);
-
-		ImGui::Begin("Settings");
-		ImGui::Checkbox("Move using arrow keys", &on);
-
-		if (!on)
-		{
-			ImGui::InputFloat("X: ", &img_pos.x);
-			ImGui::InputFloat("Y: ", &img_pos.y);
-		}
-		ImGui::Space();
-
-		ImGui::InputFloat("Scale X: ", &img_scale.x);
-		ImGui::InputFloat("Scale Y: ", &img_scale.y);
-
-		ImGui::Space();
-
-		ImGui::InputFloat("Move Speed: ", &move_speed);
-
-		ImGui::End();
-
-		ImGui::Render();
-		ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
+		object1.on_render(Sunflower::Info(&object1));
 
 		Sunflower::MainLoopEnd();
 	}
