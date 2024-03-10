@@ -5,6 +5,7 @@
 #include <iostream>
 #include "vec2.h"
 #include <SDL_ttf.h>
+#include <functional>
 
 struct Event
 {
@@ -59,14 +60,15 @@ namespace Sunflower
 
     
 
-    SDL_Event HandleEvents()
+    SDL_Event HandleEvents(std::function<void(Event ev)> func)
     {
-        while (SDL_PollEvent(&event)) {
+        while (SDL_PollEvent(&event))
+        {
             if (event.type == SDL_QUIT) {
                 quit = true;
             }
-            //func(Event(&event, event.key.keysym.scancode));
-
+            func(Event(&event, event.key.keysym.scancode));
+            
         }
         return event;
         SDL_GetWindowSize(window, &w, &h);

@@ -6,37 +6,64 @@
 #define HEIGHT (int)1080 / 1.5
 #define MOVE_SPEED 8
 
-
 class MySprite : public Sunflower::GameObject
 {
 public:
-	virtual void on_start(Sunflower::Info info) override
+	void on_start(Sunflower::Info info) override
 	{
 		renderer = Sunflower::CreateSpriteRenderer();
 		renderer.path_to_image = "Assets/kitten.png";
 		renderer.on_start(info);
 	};
-	virtual void on_update(Sunflower::Info info) override
+
+	void on_update(Sunflower::Info info) override
 	{
 		renderer.on_update(info);
 	};
-	virtual void on_render(Sunflower::Info info) override
+
+	void on_render(Sunflower::Info info) override
 	{
 		renderer.on_render(info);
 	};
-	virtual void on_input(Sunflower::Info info, Event ev) override
+
+	void on_input(Sunflower::Info info, Event ev)
 	{
-		renderer.on_input(info, Event());
+		renderer.on_input(info, ev);
+
+		if (ev.scancode == KEY_LEFT)
+		{
+			position.x -= 5;
+		}
+		else if (ev.scancode == KEY_RIGHT)
+		{
+			position.x += 5;
+		}
+
+		if (ev.scancode == KEY_UP)
+		{
+			position.y -= 5;
+		}
+		else if (ev.scancode == KEY_DOWN)
+		{
+			position.y += 5;
+		}
 	};
 private:
 	Sunflower::SpriteRenderer renderer;
+};
+
+MySprite object1;
+
+void EventCallback(Event e)
+{
+	object1.on_input(Sunflower::Info(&object1), e);
 };
 
 int main(int argc, char* argv[])
 {
 	Sunflower::InitRenderer("Sunflower", WIDTH, HEIGHT);
 
-	MySprite object1;
+	object1 = MySprite();
 
 	object1.position = Sunflower::vec2(0, 0);
 	object1.scale = Sunflower::vec2(0.3f, 0.3f);
@@ -49,7 +76,7 @@ int main(int argc, char* argv[])
 
 	while (!Sunflower::quit)
 	{
-		Sunflower::HandleEvents();
+		Sunflower::HandleEvents(EventCallback);
 
 
 		object1.on_update(Sunflower::Info(&object1));
