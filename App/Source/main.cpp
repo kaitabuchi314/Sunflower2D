@@ -12,7 +12,7 @@ public:
 	void on_start(Sunflower::Info info) override
 	{
 		renderer = Sunflower::CreateSpriteRenderer();
-		renderer.path_to_image = "Assets/kitten.png";
+		renderer.path_to_image = "Assets/guy.png";
 		renderer.on_start(info);
 	};
 
@@ -32,23 +32,29 @@ public:
 
 		if (ev.scancode == KEY_LEFT)
 		{
-			position.x -= 5;
+			scale.x -= 0.03f;
 		}
 		else if (ev.scancode == KEY_RIGHT)
 		{
-			position.x += 5;
+			scale.x += 0.03f;
 		}
 
 		if (ev.scancode == KEY_UP)
 		{
-			position.y -= 5;
+			scale.y -= 0.03f;
 		}
 		else if (ev.scancode == KEY_DOWN)
 		{
-			position.y += 5;
+			scale.y += 0.03f;
 		}
+
+		position.x = Sunflower::sunflower_get_mouse_state().x-(((w*(scale.x/0.3f))/2)/2);
+		position.y = Sunflower::sunflower_get_mouse_state().y-(((h* (scale.y/0.3f))/2)/2);
+
 	};
 private:
+	int w = 800;
+	int h = 800;
 	Sunflower::SpriteRenderer renderer;
 };
 
@@ -81,7 +87,7 @@ int main(int argc, char* argv[])
 
 		object1.on_update(Sunflower::Info(&object1));
 
-		Sunflower::DrawBackground(53, 90, 222);
+		Sunflower::DrawBackground(134, 134, 134);
 
 		object1.on_render(Sunflower::Info(&object1));
 

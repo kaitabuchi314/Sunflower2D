@@ -6,6 +6,7 @@
 #include "vec2.h"
 #include <SDL_ttf.h>
 #include <functional>
+#include "Mouse.cpp"
 
 struct Event
 {
@@ -68,7 +69,7 @@ namespace Sunflower
                 quit = true;
             }
             func(Event(&event, event.key.keysym.scancode));
-            
+            mouse_handle(event);
         }
         return event;
         SDL_GetWindowSize(window, &w, &h);
