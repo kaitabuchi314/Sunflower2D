@@ -49,8 +49,8 @@ public:
 			scale.y += 0.03f;
 		}
 
-		position.x = Sunflower::sunflower_get_mouse_state().x-(((w*(scale.x/0.3f))/2)/2);
-		position.y = Sunflower::sunflower_get_mouse_state().y-(((h* (scale.y/0.3f))/2)/2);
+		position.x = Sunflower::sunflower_get_mouse_state().x-(((w*(scale.x)))/2);
+		position.y = Sunflower::sunflower_get_mouse_state().y-(((h* (scale.y)))/2);
 
 	};
 private:
@@ -77,10 +77,11 @@ int main(int argc, char* argv[])
 
 	object1.on_start(Sunflower::Info(&object1));
 
+	Sunflower::Font roboto = Sunflower::loadFont("Assets/Roboto-Black.ttf", 28);
 
 	Sunflower::PreMainLoop();
 
-
+	
 	while (!Sunflower::quit)
 	{
 		Sunflower::HandleEvents(EventCallback);
@@ -91,6 +92,8 @@ int main(int argc, char* argv[])
 		Sunflower::DrawBackground(134, 134, 134);
 
 		object1.on_render(Sunflower::Info(&object1));
+
+		Sunflower::RenderText(roboto, "Yay! UI and text.", 0, 0, 0, 0, 0);
 
 		Sunflower::MainLoopEnd();
 	}

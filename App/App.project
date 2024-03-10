@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="App" InternalType="Console" Version="11000">
+  <Description/>
+  <VirtualDirectory Name="App">
+    <VirtualDirectory Name="ImGui">
+      <File Name="ImGui/imconfig.h"/>
+      <File Name="ImGui/imgui.cpp"/>
+      <File Name="ImGui/imgui.h"/>
+      <File Name="ImGui/imgui_demo.cpp"/>
+      <File Name="ImGui/imgui_draw.cpp"/>
+      <File Name="ImGui/imgui_impl_sdl2.cpp"/>
+      <File Name="ImGui/imgui_impl_sdl2.h"/>
+      <File Name="ImGui/imgui_impl_sdlrenderer2.cpp"/>
+      <File Name="ImGui/imgui_impl_sdlrenderer2.h"/>
+      <File Name="ImGui/imgui_internal.h"/>
+      <File Name="ImGui/imgui_tables.cpp"/>
+      <File Name="ImGui/imgui_widgets.cpp"/>
+      <File Name="ImGui/imstb_rectpack.h"/>
+      <File Name="ImGui/imstb_textedit.h"/>
+      <File Name="ImGui/imstb_truetype.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Source">
+      <File Name="Source/main.cpp"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Dependencies Name="Debug">
+    <Project Name="Sunflower-Core"/>
+  </Dependencies>
+  <Dependencies Name="Release">
+    <Project Name="Sunflower-Core"/>
+  </Dependencies>
+  <Dependencies Name="Dist">
+    <Project Name="Sunflower-Core"/>
+  </Dependencies>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="clang++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-m64;-g;-std=c++20;/EHsc;/Zc:preprocessor;/Zc:__cplusplus" C_Options="-m64;-g;/EHsc;/Zc:preprocessor;/Zc:__cplusplus" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="1">
+        <IncludePath Value="Source"/>
+        <IncludePath Value="ImGui"/>
+        <IncludePath Value="../Sunflower-Core/Source"/>
+        <IncludePath Value="../Sunflower-Core/SDL2/include"/>
+        <IncludePath Value="../Sunflower-Extras/Source"/>
+        <Preprocessor Value="WINDOWS"/>
+        <Preprocessor Value="DEBUG"/>
+      </Compiler>
+      <Linker Options="-m64;../Binaries/windows-x86_64/Debug/Sunflower-Core/Sunflower-Core.lib" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../Binaries/windows-x86_64/Debug/App/App.exe" IntermediateDirectory="../Binaries/Intermediates/windows-x86_64/Debug/App" Command="../Binaries/windows-x86_64/Debug/App/App.exe" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Dist" CompilerType="clang++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-m64;-O2;-std=c++20;/EHsc;/Zc:preprocessor;/Zc:__cplusplus" C_Options="-m64;-O2;/EHsc;/Zc:preprocessor;/Zc:__cplusplus" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="1">
+        <IncludePath Value="Source"/>
+        <IncludePath Value="ImGui"/>
+        <IncludePath Value="../Sunflower-Core/Source"/>
+        <IncludePath Value="../Sunflower-Core/SDL2/include"/>
+        <IncludePath Value="../Sunflower-Extras/Source"/>
+        <Preprocessor Value="WINDOWS"/>
+        <Preprocessor Value="DIST"/>
+      </Compiler>
+      <Linker Options="-m64;../Binaries/windows-x86_64/Dist/Sunflower-Core/Sunflower-Core.lib" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../Binaries/windows-x86_64/Dist/App/App.exe" IntermediateDirectory="../Binaries/Intermediates/windows-x86_64/Dist/App" Command="../Binaries/windows-x86_64/Dist/App/App.exe" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="clang++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-m64;-O2;-g;-std=c++20;/EHsc;/Zc:preprocessor;/Zc:__cplusplus" C_Options="-m64;-O2;-g;/EHsc;/Zc:preprocessor;/Zc:__cplusplus" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="1">
+        <IncludePath Value="Source"/>
+        <IncludePath Value="ImGui"/>
+        <IncludePath Value="../Sunflower-Core/Source"/>
+        <IncludePath Value="../Sunflower-Core/SDL2/include"/>
+        <IncludePath Value="../Sunflower-Extras/Source"/>
+        <Preprocessor Value="WINDOWS"/>
+        <Preprocessor Value="RELEASE"/>
+      </Compiler>
+      <Linker Options="-m64;../Binaries/windows-x86_64/Release/Sunflower-Core/Sunflower-Core.lib" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="../Binaries/windows-x86_64/Release/App/App.exe" IntermediateDirectory="../Binaries/Intermediates/windows-x86_64/Release/App" Command="../Binaries/windows-x86_64/Release/App/App.exe" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>

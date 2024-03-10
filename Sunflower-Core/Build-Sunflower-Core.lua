@@ -13,7 +13,7 @@ project "Sunflower-Core"
       "SDL2/include",
       "../TestProject/Source"
    }
-   links {"SDL2/lib/SDL.lib", "SDL2/lib/SDL_test.lib", "SDL2/lib/SDL_main.lib", "SDL2/lib/SDL_image.lib"}
+   links {"SDL2/lib/SDL.lib", "SDL2/lib/SDL_test.lib", "SDL2/lib/SDL_main.lib", "SDL2/lib/SDL_image.lib", "SDL2/lib/SDL_ttf.lib"}
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
    objdir ("../Binaries/Intermediates/" .. OutputDir .. "/%{prj.name}")

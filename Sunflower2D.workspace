@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Sunflower2D" Database="" Version="10000">
+  <Project Name="App" Path="App/App.project" Active="Yes"/>
+  <VirtualDirectory Name="Sunflower-Core">
+    <Project Name="Sunflower-Core" Path="Sunflower-Core/Sunflower-Core.project"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Sunflower-Extras">
+    <Project Name="Sunflower-Extras" Path="Sunflower-Extras/Sunflower-Extras.project"/>
+  </VirtualDirectory>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Project Name="App" ConfigName="Debug"/>
+      <Project Name="Sunflower-Core" ConfigName="Debug"/>
+      <Project Name="Sunflower-Extras" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="no">
+      <Project Name="App" ConfigName="Release"/>
+      <Project Name="Sunflower-Core" ConfigName="Release"/>
+      <Project Name="Sunflower-Extras" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Dist" Selected="no">
+      <Project Name="App" ConfigName="Dist"/>
+      <Project Name="Sunflower-Core" ConfigName="Dist"/>
+      <Project Name="Sunflower-Extras" ConfigName="Dist"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

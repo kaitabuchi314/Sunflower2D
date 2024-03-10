@@ -16,6 +16,10 @@ struct Event
 
 namespace Sunflower
 {
+    struct Font
+    {
+        TTF_Font* font;
+    };
     SDL_Event event;
     bool quit;
     SDL_Renderer* renderer;
@@ -28,6 +32,8 @@ namespace Sunflower
             std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
             return false;
         }
+
+        TTF_Init();
         // Create a window
         window = SDL_CreateWindow(title, 100, 100, width, height, SDL_WINDOW_SHOWN);
         if (window == nullptr) {
@@ -59,7 +65,22 @@ namespace Sunflower
         quit = false;
     }
 
-    
+    Font loadFont(std::string path, float size)
+    {
+        TTF_Font* font = TTF_OpenFont(path.c_str(), size);
+
+        return Font(font);
+    };
+
+    void RenderText(Font font, std::string text, float x, float y, int r, int g, int b)
+    {
+        SDL_Surface* textSurface = TTF_RenderText_Blended(font.font, text.c_str(), SDL_Color(r, g, b));
+        SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+
+        SDL_Rect destRect = { x, y, textSurface->w, textSurface->h };
+        SDL_RenderCopy(renderer, textTexture, NULL, &destRect);
+        SDL_RenderPresent(renderer);
+    }
 
     SDL_Event HandleEvents(std::function<void(Event ev)> func)
     {
@@ -116,7 +137,7 @@ namespace Sunflower
     {
         float w = scale.x*image.w;
         float h = scale.y*image.h;
-        SDL_Rect destRect = { position.wstss(w,h).x, position.wstss(w,h).y, w, h};
+        SDL_Rect destRect = {position.x, position.y, w, h};
 
         SDL_RenderCopy(renderer, image.texture, NULL, &destRect);
     }
@@ -132,6 +153,7 @@ namespace Sunflower
     {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
+        TTF_Quit();
         SDL_Quit();
     }
 
