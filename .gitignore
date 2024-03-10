@@ -9,6 +9,9 @@ Binaries/
 *.sln
 *.log
 *.xcodeproj
+*.project
+*.workspace
+*.mk
 App/SDL2.dll
 App/SDL2_image.dll
 App/SDL2_mixer.dll
