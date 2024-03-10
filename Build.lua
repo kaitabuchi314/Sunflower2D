@@ -10,6 +10,10 @@ workspace "Sunflower2D"
 
 OutputDir = "%{cfg.system}-%{cfg.architecture}/%{cfg.buildcfg}"
 
+group "Sunflower-Extras"
+	include "Sunflower-Extras/Build-Sunflower-Extras.lua"
+group ""
+
 group "Sunflower-Core"
 	include "Sunflower-Core/Build-Sunflower-Core.lua"
 group ""

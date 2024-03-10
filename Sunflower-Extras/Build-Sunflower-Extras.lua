@@ -1,26 +1,16 @@
-project "App"
-   kind "ConsoleApp"
+project "Sunflower-Extras"
+   kind "StaticLib"
    language "C++"
    cppdialect "C++20"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
-   files { "Source/**.h", "Source/**.cpp", "ImGui/**.h", "ImGui/**.cpp" }
+   files { "Source/**.h", "Source/**.cpp"}
 
    includedirs
    {
       "Source",
-	"ImGui",
-	  -- Include Core
-	"../Sunflower-Core/Source",
-        "../Sunflower-Core/SDL2/include",
-	"../Sunflower-Extras/Source"
-
-   }
-
-   links
-   {
-      "Sunflower-Core"
+      "../Sunflower-Core/Source"
    }
 
    targetdir ("../Binaries/" .. OutputDir .. "/%{prj.name}")
@@ -28,7 +18,7 @@ project "App"
 
    filter "system:windows"
        systemversion "latest"
-       defines { "WINDOWS" }
+       defines { }
 
    filter "configurations:Debug"
        defines { "DEBUG" }
