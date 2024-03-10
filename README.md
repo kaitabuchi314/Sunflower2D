@@ -7,4 +7,4 @@ Example:
 Mac: `premake5 xcode4`
 Mac or Linux: `premake5 codelite`
 Linux: `premake5 gmake2`
-For Mac, it makes an XCode project, for linux, it makes a Codelite project, and for Windows, a vs2022 project. Note: On Windows or Mac, you can run the Linux script if you use codelite. Then, go into the terminal inside the repo's folder, and run `python SetProject.py` and type "App", then press enter.
+Then, go into the terminal inside the repo's folder, and run `python SetProject.py` and type "App", then press enter.
