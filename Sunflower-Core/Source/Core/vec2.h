@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "Core/Debug.h"
 
 namespace Sunflower
 {
